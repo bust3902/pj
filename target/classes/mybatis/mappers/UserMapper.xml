@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.co.papajohns.mappers.UserMapper">
+
+	<!--
+		모든 유저의 정보
+	-->
+	<select id="getAllUser" resultType="User">
+		SELECT USER_NO as userNo, ID as id, PASSWORD as password, NAME as name, EMAIL as email,
+			   TEL as tel, PHONE as phone, BIRTH as birth, GENDER as gender, AUTHORITY as authority
+		FROM USER
+	</select>
+</mapper>
