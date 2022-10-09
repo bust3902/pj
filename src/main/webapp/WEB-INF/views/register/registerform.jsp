@@ -185,9 +185,13 @@
             </div>
         </div>
 
+        <!-- 유효성 체크 -->
+        <div class="mt-5 mb-5 text-center">
+            <button class="btn btn-danger btn-lg rounded-pill text-white" id="btn-validation"><span class="fw-bold">가입완료</span></button>
+        </div>
         <!-- submit -->
-        <div class="mt-5 text-center">
-            <button class="btn btn-danger btn-lg rounded-pill text-white" id="btn-register"><span class="fw-bold">가입완료</span></button>
+        <div class="mt-5 mb-5 text-center">
+            <button class="btn visually-hidden" id="btn-register"></button>
         </div>
 
     </div>
@@ -195,10 +199,10 @@
 </body>
 
 <!-- JS -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/register.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/registerform.js"></script>
 
 <!-- Date Picker -->
-<script crossorigin="anonymous">
+<script>
 
     $(function(){
         $('.datepicker').datepicker();

@@ -2,8 +2,6 @@ package kr.co.papajohns.vo;
 
 import java.util.Date;
 
-import org.apache.ibatis.type.Alias;
-
 import lombok.Getter;
 
 /**
@@ -14,7 +12,7 @@ import lombok.Getter;
 @Getter
 public class User {
 
-	private int userNo;
+	private int no;
 	private String id;
 	private String password;
 	private String name;
@@ -24,36 +22,12 @@ public class User {
 	private Date birth;
 	private String gender;
 	private String authority;
+	private String createdDate;
 
-	public User() {
-		
-	}
-	
-	public User(String id, String password, String name, String email,
-			String tel, String phone, Date birth, String gender, String authority) {
-		this.id = id;
+	public void setPassword(String password) {
 		this.password = password;
-		this.name = name;
-		this.email = email;
-		this.tel = tel;
-		this.phone = phone;
-		this.birth = birth;
-		this.gender = gender;
-		this.authority = authority;
 	}
-	
-	public User(int userNo, String id, String password, String name, String email,
-				String tel, String phone, Date birth, String gender, String authority) {
-		this.userNo = userNo;
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.email = email;
-		this.tel = tel;
-		this.phone = phone;
-		this.birth = birth;
-		this.gender = gender;
-		this.authority = authority;
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
-
 }

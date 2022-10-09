@@ -12,10 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 
@@ -32,7 +29,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping(path = "/")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -57,32 +54,32 @@ public class HomeController {
 
 	// Test - 모든 유저 정보
 	@GetMapping(path = "/all")
-	public @ResponseBody User getAllUser() {
-		return userService.getAllUser();
+	public @ResponseBody User findAll() {
+		return userService.findAll();
 	}
 
-	@RequestMapping(value = "/menu", method = RequestMethod.GET)
+	@GetMapping(path = "/menu")
 	public String menu() {
-		
 		return "/menu/menu";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String lgin() {
-
-		return "/login/login";
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@GetMapping(path = "/register")
 	public String register() {
-
-		return "/register/register";
+		return "/register/registerform";
 	}
 
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	@GetMapping(path = "/cart")
 	public String cart() {
-
 		return "/cart/cart";
 	}
+
+	@GetMapping(path = "/notice")
+	public String notice() { return "/notice/notice"; }
+
+	@GetMapping(path = "/inquiry")
+	public String inquiry() { return "/inquiry/inquiry"; }
+
+	@GetMapping(path = "/findstore")
+	public String findstore() { return "/findstore/findstore"; }
 
 }

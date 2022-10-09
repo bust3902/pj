@@ -5,9 +5,16 @@
 	<!--
 		모든 유저의 정보
 	-->
-	<select id="getAllUser" resultType="User">
-		SELECT USER_NO as userNo, ID as id, PASSWORD as password, NAME as name, EMAIL as email,
-			   TEL as tel, PHONE as phone, BIRTH as birth, GENDER as gender, AUTHORITY as authority
-		FROM USER
+	<select id="findAll" resultType="User">
+		select user_no as userNo, id as id, password as password, name as name, email as email,
+			   tel as tel, phone as phone, birth as birth, gender as gender, authority as authority
+		from user
 	</select>
+
+	<insert id="insert" parameterType="kr.co.papajohns.dto.UserForm">
+		insert into user
+			(id, password, name, email, tel, phone, birth, gender, authority, created_date)
+		values
+			(#{id}, #{password}, #{name}, #{authority}, #{createdDate})
+	</insert>
 </mapper>

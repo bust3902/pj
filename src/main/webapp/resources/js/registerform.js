@@ -17,11 +17,11 @@ document.getElementById("btn-register").addEventListener("click", function() {
         birth : document.getElementById("birth").value,
         gender : document.querySelector("input[name=gender]:checked").value
     }
-    // console.log(user);
+    console.log(user);
 
     let xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'http://localhost:8075/user/register', true);
+    xhr.open('POST', 'http://localhost:8075/user/register/action', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send("user");
 
