@@ -22,7 +22,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="kr.co.papajohns" />
-	<context:component-scan base-package="kr.co.papajohns.controller"/>
+	<context:component-scan base-package="kr.co.papajohns.webcontroller"/>
 	<context:component-scan base-package="kr.co.papajohns.service"/>
 	<context:component-scan base-package="kr.co.papajohns.mappers"/>
 	<context:component-scan base-package="kr.co.papajohns.vo"/>

@@ -2,7 +2,10 @@ package kr.co.papajohns.vo;
 
 import java.util.Date;
 
+import kr.co.papajohns.request.UserRequest;
+import lombok.Builder;
 import lombok.Getter;
+import org.springframework.beans.BeanUtils;
 
 /**
  * 사용자 정보
@@ -22,12 +25,18 @@ public class User {
 	private Date birth;
 	private String gender;
 	private String authority;
-	private String createdDate;
+	private Date createdDate;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public void setCreatedDate(String createdDate) {
+	@Builder
+	public User(UserRequest userRequest, String encodePassword, Date createdDate) {
+		this.id = userRequest.getId();
+		this.birth = userRequest.getBirth();
+		this.email = userRequest.getEmail();
+		this.gender = userRequest.getGender();
+		this.name = userRequest.getName();
+		this.password = encodePassword;
+		this.phone = userRequest.getPhone();
+		this.tel = userRequest.getTel();
 		this.createdDate = createdDate;
 	}
 }

@@ -45,7 +45,7 @@
                 <div class="row mb-3">
                     <div class="col-2 fw-bold fs-6 text-center">이름<span class="text-danger">*<span></div>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="name">
+                        <input class="form-control" type="text" name="name" placeholder="이름을 입력해주세요">
                     </div>
                 </div>
             </div>
@@ -55,10 +55,10 @@
                 <div class="row mb-3">
                     <div class="col-2 fw-bold fs-6 text-center">아이디<span class="text-danger">*<span></div>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="id">
+                        <input class="form-control" type="text" name="userId" placeholder="아이디를 입력해주세요.">
                     </div>
                     <div class="col-4">
-                        <button class="btn btn-outline-dark rounded-pill">중복체크</button>
+                        <button class="btn btn-outline-dark rounded-pill" id="duplicateCheck">중복체크</button>
                     </div>
                 </div>
             </div>
@@ -68,10 +68,10 @@
                 <div class="row mb-3">
                     <div class="col-2 fw-bold fs-6 text-center">비밀번호<span class="text-danger">*<span></div>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="password">
+                        <input class="form-control" type="password" name="userPassword" placeholder="영문, 숫자, 특수문자 조합으로 8~20글자.">
                     </div>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="checkPassword">
+                        <input class="form-control" type="password" name="checkPassword" placeholder="비밀번호를 한번 더 입력해주세요.">
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="row mb-3">
                     <div class="col-2 fw-bold fs-6 text-center">이메일<span class="text-danger">*<span></div>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="email">
+                        <input class="form-control" type="email" name="email" placeholder="이메일을 입력해주세요.">
                     </div>
                 </div>
             </div>
@@ -93,13 +93,29 @@
                     <div class="col-4">
                         <div class="row">
                             <div class="col-4">
-                                <select class="form-select" name="telAreacode" id="tel-areacode">
+                                <select class="form-select" id="telAreacode">
                                     <option></option>
+                                    <option>없음</option>
                                     <option>02</option>
+                                    <option>031</option>
+                                    <option>032</option>
+                                    <option>033</option>
+                                    <option>041</option>
+                                    <option>042</option>
+                                    <option>043</option>
+                                    <option>051</option>
+                                    <option>052</option>
+                                    <option>053</option>
+                                    <option>054</option>
+                                    <option>055</option>
+                                    <option>061</option>
+                                    <option>062</option>
+                                    <option>063</option>
+                                    <option>064</option>
                                 </select>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="text" name="tel">
+                                <input class="form-control" type="text" name="tel"  placeholder="전화번호를 입력해주세요.">
                             </div>
                         </div>
                     </div>
@@ -113,13 +129,18 @@
                     <div class="col-4">
                         <div class="row">
                             <div class="col-4">
-                                <select class="form-select" name="carrierIdentificationNumber" id="carrier-identification-number">
+                                <select class="form-select" id="carrierIdNo">
                                     <option></option>
                                     <option>010</option>
+                                    <option>011</option>
+                                    <option>016</option>
+                                    <option>017</option>
+                                    <option>018</option>
+                                    <option>019</option>
                                 </select>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="text" name="phone">
+                                <input class="form-control" type="text" name="phone" placeholder="휴대폰 번호를 입력해주세요.">
                             </div>
                         </div>
                     </div>
@@ -165,21 +186,21 @@
             </div>
             <div class="mt-3 border-bottom border-2">
                 <div class="form-check mb-3 ms-5">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" type="checkbox" id="chkCheckAll" onchange="chkCheckAll(this)">
                     <label class="form-check-label" for="flexCheckDefault"><span class="fw-bold">모든 약관 및 마케팅에 동의합니다.</span></label>
                 </div>
             </div>
             <div class="mt-3 border-bottom border-2">
                 <div class="form-check mb-3 ms-5">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" type="checkbox" name="checkbox" onclick="uncheckChkCheckAll(this)">
                     <label class="form-check-label" for="flexCheckDefault"><span class="fw-bold">파파존스 이용약관 (필수)</span></label>
                 </div>
                 <div class="form-check mb-3 ms-5">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" type="checkbox" name="checkbox" onclick="uncheckChkCheckAll(this)">
                     <label class="form-check-label" for="flexCheckDefault"><span class="fw-bold">개인정보 수집 및 이용 동의 (필수)</span></label>
                 </div>
                 <div class="form-check mb-3 ms-5">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" type="checkbox" name="checkbox" onclick="uncheckChkCheckAll(this)">
                     <label class="form-check-label" for="flexCheckDefault"><span class="fw-bold">위치기반 서비스 이용약관 (필수)</span></label>
                 </div>
             </div>
@@ -187,7 +208,8 @@
 
         <!-- 유효성 체크 -->
         <div class="mt-5 mb-5 text-center">
-            <button class="btn btn-danger btn-lg rounded-pill text-white" id="btn-validation"><span class="fw-bold">가입완료</span></button>
+            <input type="button" class="btn btn-danger btn-lg rounded-pill text-white fw-bold"
+                   onclick="validation()" value="가입완료"></input>
         </div>
         <!-- submit -->
         <div class="mt-5 mb-5 text-center">
@@ -203,10 +225,22 @@
 
 <!-- Date Picker -->
 <script>
-
     $(function(){
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            dateFormat: 'yy-mm-dd',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            closeText: '닫기',
+            currentText: '오늘',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            showMonthAfterYear: true,
+            yearSuffix: '년',
+            showButtonPanel: true
+        });
     })
 </script>
-
 </html>

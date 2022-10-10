@@ -1,13 +1,9 @@
-package kr.co.papajohns.controller;
+package kr.co.papajohns.webcontroller;
 
 import java.text.DateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 import kr.co.papajohns.service.UserService;
-import kr.co.papajohns.vo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -23,23 +19,23 @@ import javax.inject.Inject;
 public class HomeController {
 	@Inject
 	private UserService userService;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@GetMapping(path = "/")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+
 		String formattedDate = dateFormat.format(date);
-		
+
 		model.addAttribute("serverTime", formattedDate );
-		
+
 		return "home";
 	}
 
@@ -50,12 +46,6 @@ public class HomeController {
 		test.put("test", "hello world");
 
 		return test	;
-	}
-
-	// Test - 모든 유저 정보
-	@GetMapping(path = "/all")
-	public @ResponseBody User findAll() {
-		return userService.findAll();
 	}
 
 	@GetMapping(path = "/menu")

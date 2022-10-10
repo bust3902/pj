@@ -5,16 +5,28 @@
 	<!--
 		모든 유저의 정보
 	-->
-	<select id="findAll" resultType="User">
-		select user_no as userNo, id as id, password as password, name as name, email as email,
+	<select id="getAll" resultType="User">
+		select no as userNo, id as id, password as password, name as name, email as email,
 			   tel as tel, phone as phone, birth as birth, gender as gender, authority as authority
 		from user
 	</select>
+	<!--
+		ID로 유저 검색
+	-->
+	<select id="getById" parameterType="string" resultType="User">
+		select no as userNo, id as id, password as password, name as name, email as email,
+			   tel as tel, phone as phone, birth as birth, gender as gender, authority as authority
+		from user
+		where id = {value}
+	</select>
 
-	<insert id="insert" parameterType="kr.co.papajohns.dto.UserForm">
+	<!--
+		회원가입 유저 데이터 저장
+	-->
+	<insert id="create" parameterType="kr.co.papajohns.vo.User">
 		insert into user
 			(id, password, name, email, tel, phone, birth, gender, authority, created_date)
 		values
-			(#{id}, #{password}, #{name}, #{authority}, #{createdDate})
+			(#{id}, #{password}, #{name}, #{email}, #{tel}, #{phone}, #{birth}, #{gender}, #{authority}, #{createdDate})
 	</insert>
 </mapper>

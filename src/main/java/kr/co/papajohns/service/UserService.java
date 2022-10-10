@@ -1,8 +1,6 @@
 package kr.co.papajohns.service;
 
-import javax.inject.Inject;
-
-import kr.co.papajohns.dto.UserForm;
+import kr.co.papajohns.request.UserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,31 +8,41 @@ import org.springframework.stereotype.Service;
 import kr.co.papajohns.mappers.UserMapper;
 import kr.co.papajohns.vo.User;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
-	SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd");
-	Date time = new Date();
+	public static final String DATE_FORMATTER = "yyyy-MM-dd";
 
-	@Inject
-	private UserMapper userMapper;
-	
-	public User findAll() {
-		return userMapper.findAll();
+	private final UserMapper userMapper;
+
+	// 모든 유저 데이터 로드
+	public List<User> getAll() {
+		return this.userMapper.getAll();
+	}
+	// ID로 유저 검색
+	public User getById(String id) {
+		return userMapper.getById(id);
 	}
 
-	public void insert(User user) {
+
+	// 회원가입
+	public void create(UserRequest userRequest) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setCreatedDate(format.format(time).toString());
+		Date createdDate = new Date();
+		String encodePassword = passwordEncoder.encode(userRequest.getPassword());
 
-		userMapper.insert(new UserForm(user.getId(), user.getPassword(), user.getName(), user.getEmail(),user.getTel(),
-							  user.getPhone(), user.getBirth(), user.getGender(), user.getAuthority(),
-							  user.getCreatedDate()));
+		User user = User.builder()
+				.userRequest(userRequest)
+				.encodePassword(encodePassword)
+				.createdDate(createdDate)
+				.build();
+
+		// SimpleDateFormat format = new SimpleDateFormat( DATE_FORMATTER);
+
+		userMapper.create(user);
 	}
-
 }
