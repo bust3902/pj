@@ -56,7 +56,7 @@
 		</div>
 
         <!-- 로그인 모달 -->
-        <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -67,11 +67,11 @@
                     <div class="modal-body">
                         <div class="row mt-3">
                             <div class="col-3">아이디</div>
-                            <div class="col-9"> <input class="form-control" type="text" name="id"></div>
+                            <div class="col-9"> <input class="form-control" type="text" id="userId"></div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-3">패스워드</div>
-                            <div class="col-9"> <input class="form-control" type="text" name="password"></div>
+                            <div class="col-9"> <input class="form-control" type="text" id="userPassword"></div>
                         </div>
                         <div class="row mt-5 mb-3 px-3">
                             <button class="btn btn-danger rounded-pill">로그인</button>
